@@ -1,44 +1,86 @@
-## demo app - for docker-compose crash course
+# 🚀 Docker Compose Crash Course App
 
+This is a simple full-stack app built as part of a **Docker Compose crash course**. It demonstrates how to run a Node.js web app with a MongoDB backend using Docker Compose.
 
-### With Docker
+![Docker Compose Screenshot](./images/docker-compose-output.png)
 
-#### To start the application
+## 🧩 Tech Stack
 
-Step 1: Create docker network
+- 🌐 Node.js (Express server)
+- 🗄️ MongoDB (with Mongo Express GUI)
+- 🐳 Docker & Docker Compose
 
-    docker network create mongo-network 
+---
 
-Step 2: start mongodb 
+## 📸 Screenshots
 
-    docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password --name mongodb --net mongo-network mongo    
+### ✅ App Interface (localhost:3000)
+![App Screenshot](./images/web-app.png)
 
-Step 3: start mongo-express
-    
-    docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password --net mongo-network --name mongo-express -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express   
+### ✅ Mongo Express Dashboard (localhost:8081)
+![Mongo Express](./images/mongo-express.png)
 
-_NOTE: creating docker-network in optional. You can start both containers in a default network. In this case, just emit `--net` flag in `docker run` command_
+### ✅ Docker Compose Output
+![Terminal Output](./images/docker-compose-output.png)
 
-### With Docker Compose
+---
 
-#### To start the application
+## 📁 Folder Structure
 
-Step 1: start mongodb and mongo-express
+```bash
+.
+├── docker-compose.yml
+├── my-app/
+│   ├── Dockerfile
+│   ├── package.json
+│   └── index.html
+🔧 How to Run
+Clone the Repo
 
-    docker-compose -f docker-compose.yaml up
-    
-_You can access the mongo-express under localhost:8080 from your browser_
-    
-Step 2: open mongo-express from browser
+bash
+Copy
+Edit
+git clone https://github.com/your-username/docker-compose-crash-course.git
+cd docker-compose-crash-course
+Run Docker Compose
 
-    http://localhost:8081
+bash
+Copy
+Edit
+docker-compose up --build
+Access the App
 
-Step 3: create `my-db` _db_ and `my-collection` _collection_ and _document_ with `{myid: 1, data: "some dynamic data loaded from db"}` in mongo-express
-    
+Web App: http://localhost:3000
 
-Step 4: Access you nodejs application UI from browser
+Mongo Express: http://localhost:8081
 
-    http://localhost:3000
-    
-# docker-compose-fullstack-app
-# docker-compose-fullstack-app
+🧠 Key Learning Highlights
+Inter-service communication via Docker networks
+
+Using environment variables for MongoDB configuration
+
+Managing MongoDB visually with Mongo Express
+
+Binding host and container ports
+
+Static + dynamic content rendering from MongoDB
+
+🔐 Environment Variables Used
+yaml
+Copy
+Edit
+# For MongoDB
+MONGO_INITDB_ROOT_USERNAME: admin
+MONGO_INITDB_ROOT_PASSWORD: admin1
+
+# For App
+MONGO_DB_USERNAME: admin
+MONGO_DB_PWD: pass
+
+# For Mongo Express
+ME_CONFIG_MONGODB_SERVER: mongodb
+ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+ME_CONFIG_MONGODB_ADMINPASSWORD: admin1
+🥂 Special Thanks
+Thanks to the open-source community for the amazing base images and tutorials!
+
