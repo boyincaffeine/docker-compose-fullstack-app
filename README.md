@@ -1,86 +1,70 @@
-# 🚀 Docker Compose Crash Course App
+# Docker Compose Fullstack App 🐳
 
-This is a simple full-stack app built as part of a **Docker Compose crash course**. It demonstrates how to run a Node.js web app with a MongoDB backend using Docker Compose.
+This project is a **cloned Node.js + MongoDB fullstack application** containerized using **Docker** and **Docker Compose**. The original source code was cloned from GitHub, and the **Dockerfile** and **docker-compose.yml** were written by me to containerize and orchestrate the application.
 
-![Docker Compose Screenshot](./images/docker-compose-output.png)
+## 🔧 Tech Stack
 
-## 🧩 Tech Stack
+- **Frontend**: (if applicable, e.g., React, EJS, etc.)
+- **Backend**: Node.js / Express
+- **Database**: MongoDB
+- **Containerization**: Docker
+- **Orchestration**: Docker Compose
 
-- 🌐 Node.js (Express server)
-- 🗄️ MongoDB (with Mongo Express GUI)
-- 🐳 Docker & Docker Compose
-
----
-
-## 📸 Screenshots
-
-### ✅ App Interface (localhost:3000)
-![App Screenshot](./images/web-app.png)
-
-### ✅ Mongo Express Dashboard (localhost:8081)
-![Mongo Express](./images/mongo-express.png)
-
-### ✅ Docker Compose Output
-![Terminal Output](./images/docker-compose-output.png)
-
----
-
-## 📁 Folder Structure
+## 📁 Project Structure
 
 ```bash
 .
-├── docker-compose.yml
-├── my-app/
+├── backend/                # Node.js app
 │   ├── Dockerfile
-│   ├── package.json
-│   └── index.html
-🔧 How to Run
-Clone the Repo
+│   └── ...
+├── docker-compose.yml
+└── README.md
+🚀 Getting Started
+Prerequisites
+Docker
 
-bash
-Copy
-Edit
-git clone https://github.com/your-username/docker-compose-crash-course.git
-cd docker-compose-crash-course
-Run Docker Compose
+Docker Compose
 
+Run the App
 bash
 Copy
 Edit
 docker-compose up --build
+This command builds and starts all services defined in the docker-compose.yml file.
+
 Access the App
+Frontend: http://localhost:3000 (or your configured port)
 
-Web App: http://localhost:3000
+MongoDB: Running in its own container on default port 27017
 
-Mongo Express: http://localhost:8081
+📦 Docker Overview
+Dockerfile Highlights
+Installs dependencies
 
-🧠 Key Learning Highlights
-Inter-service communication via Docker networks
+Copies source code
 
-Using environment variables for MongoDB configuration
+Exposes application port
 
-Managing MongoDB visually with Mongo Express
+Uses multi-stage build if needed
 
-Binding host and container ports
+docker-compose.yml Highlights
+Defines app and mongo services
 
-Static + dynamic content rendering from MongoDB
+Uses named volumes for data persistence
 
-🔐 Environment Variables Used
-yaml
-Copy
-Edit
-# For MongoDB
-MONGO_INITDB_ROOT_USERNAME: admin
-MONGO_INITDB_ROOT_PASSWORD: admin1
+Enables network communication between containers
 
-# For App
-MONGO_DB_USERNAME: admin
-MONGO_DB_PWD: pass
+🧠 Why Docker Compose?
+Simplifies multi-container setups
 
-# For Mongo Express
-ME_CONFIG_MONGODB_SERVER: mongodb
-ME_CONFIG_MONGODB_ADMINUSERNAME: admin
-ME_CONFIG_MONGODB_ADMINPASSWORD: admin1
-🥂 Special Thanks
-Thanks to the open-source community for the amazing base images and tutorials!
+Easy to scale or modify individual services
+
+Ideal for local development and CI/CD
+
+🛠️ Customization
+The original app was cloned from GitHub
+
+I wrote the Dockerfile and docker-compose.yml from scratch
+
+Configured environment variables, ports, and volumes
 
